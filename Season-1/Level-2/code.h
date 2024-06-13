@@ -27,7 +27,7 @@
 // Internal counter of user accounts
 int userid_next = 0;
 
-// The following structure is implementation-speicific and it's supposed to be unknown 
+// The following structure is implementation-specific and it's supposed to be unknown 
 // to non-privileged users
 typedef struct {
     bool isAdmin;
@@ -80,7 +80,7 @@ bool update_setting(int user_id, const char *index, const char *value) {
         return false;
 
     v = strtol(value, &endptr, 10);
-    if (*endptr || i >= SETTINGS_COUNT)
+    if (*endptr || i < 0 || i >= SETTINGS_COUNT)
         return false;
     accounts[user_id]->setting[i] = v;
     return true;
